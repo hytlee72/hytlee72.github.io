@@ -1,0 +1,8 @@
+http://creativejs.com/resources/requestanimationframe/
+https://developer.mozilla.org/en-uS/docs/Web/API/window/requestAnimationFrame
+http://www.w3.org/TR/animation-timing/#requestAnimationFrame
+https://www.igvita.com/
+https://developer.chrome.com/devtools/docs/demos/too-much-layout
+https://developers.google.com/web/fundamentals/look-and-feel/animations/animations-and-performance?hl=en
+http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/
+http://www.html5rocks.com/en/tutorials/speed/animations/
