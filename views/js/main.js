@@ -459,7 +459,9 @@ var resizePizzas = function(size) {
     }
   }
 
-  changePizzaSizes(size);
+  window.requestAnimationFrame(function(){
+    changePizzaSizes(size);
+    });
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
@@ -505,21 +507,33 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
+// Debounced scroll events
+var latestKnownScrollY = 0;
+    ticking = false;
 
 function onScroll() {
-  window.requestAnimationFrame(updatePositions);
+  latestKnownScrollY = window.scrollY;
+  requestTick();
+}
+
+function requestTick() {
+  if(!ticking) {
+    window.requestAnimationFrame(updatePositions);
+  }
+  ticking = true;
 }
 
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-  var items = document.getElementsByClassName('mover'),
-      scrTop = document.body.scrollTop,
+  ticking = false;
+  var currentScrollY = latestKnownScrollY,
+      items = document.getElementsByClassName('mover'),
       phase;
-      for (var i = 0; i < items.length; i++) {
-        phase = Math.sin((scrTop / 1250) + (i % 5));
-        items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-    }
+  for (var i = 0; i < items.length; i++) {
+      phase = Math.sin((currentScrollY / 1250) + (i % 5));
+      items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+  }
 
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -533,7 +547,7 @@ function updatePositions() {
 }
 
 // runs updatePositions on scroll
-window.addEventListener('scroll', onScroll);
+window.addEventListener('scroll', onScroll, false);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
@@ -542,7 +556,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
+    elem.src = "images/pizza_mini.png";
     //elem.style.height = "100px";
     //elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
