@@ -449,7 +449,8 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
-    // Create var rndPizzaCont and removed from for loop to minimize queries
+    // Created var rndPizzaCont and removed from for loop to minimize queries
+    // Optimized with rAF
   function changePizzaSizes(size) {
     var rndPizzaCont = document.querySelectorAll(".randomPizzaContainer");
     var dx = determineDx(rndPizzaCont[1], size);
@@ -507,7 +508,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
 // Moves the sliding background pizzas based on scroll position
-// Debounced scroll events
+// Debounced scroll events and optimized with rAF
 var latestKnownScrollY = 0;
     ticking = false;
 
@@ -553,7 +554,7 @@ window.addEventListener('scroll', onScroll, false);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  for (var i = 0; i < 50; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza_mini.png";
