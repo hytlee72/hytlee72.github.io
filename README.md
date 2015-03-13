@@ -25,3 +25,13 @@ Changes to main.js
 		Removing unecessary vars from the for loop
 		Debouncing the scroll events
 		And using rAF to call the function
+
+Sources used for research:
+http://creativejs.com/resources/requestanimationframe/
+https://developer.mozilla.org/en-uS/docs/Web/API/window/requestAnimationFrame
+http://www.w3.org/TR/animation-timing/#requestAnimationFrame
+https://www.igvita.com/
+https://developer.chrome.com/devtools/docs/demos/too-much-layout
+https://developers.google.com/web/fundamentals/look-and-feel/animations/animations-and-performance?hl=en
+http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/
+http://www.html5rocks.com/en/tutorials/speed/animations/
