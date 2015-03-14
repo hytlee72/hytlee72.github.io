@@ -25,6 +25,7 @@ Changes to main.js
 		Removing unecessary vars from the for loop
 		Debouncing the scroll events
 		And using rAF to call the function
+		Used translate3d to animate pizzas
 
 Sources used for research:
 http://creativejs.com/resources/requestanimationframe/
@@ -35,3 +36,4 @@ https://developer.chrome.com/devtools/docs/demos/too-much-layout
 https://developers.google.com/web/fundamentals/look-and-feel/animations/animations-and-performance?hl=en
 http://www.html5rocks.com/en/tutorials/speed/high-performance-animations/
 http://www.html5rocks.com/en/tutorials/speed/animations/
+http://www.w3schools.com/css/css3_3dtransforms.asp

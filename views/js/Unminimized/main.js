@@ -509,6 +509,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 
 // Moves the sliding background pizzas based on scroll position
 // Debounced scroll events and optimized with rAF
+// optimized with translate3d
 var latestKnownScrollY = 0;
     ticking = false;
 
@@ -533,7 +534,9 @@ function updatePositions() {
       phase;
   for (var i = 0; i < items.length; i++) {
       phase = Math.sin((currentScrollY / 1250) + (i % 5));
-      items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+      items[i].style.transform = 'translate3d(' + ((items[i].basicLeft) + 100 * phase) + 'px, 0px, 0px)';
+      //console.log(items[i].basicLeft);
+      //console.log(((i % 8) * 256));
   }
 
 
@@ -563,6 +566,7 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
+    //console.log(elem.basicLeft);
   }
   window.requestAnimationFrame(updatePositions);
 });
